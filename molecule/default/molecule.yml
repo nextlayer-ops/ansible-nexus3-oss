@@ -30,13 +30,34 @@ platforms:
   #   image: opensuse
   #   image_version: '42.3'
   #   command: /lib/systemd/systemd
-    privileged: true
+  #   privileged: true
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
+    enabled: False
+
 scenario:
   name: default
+  check_sequence:
+    - destroy
+    - create
+    - converge
+    - check
+    - destroy
+  converge_sequence:
+    - create
+    - converge
+  destroy_sequence:
+    - destroy
+  test_sequence:
+    - destroy
+    - dependency
+    - create
+    - converge
+    - lint
+    - verify
+    - destroy
 verifier:
   name: testinfra
   lint:

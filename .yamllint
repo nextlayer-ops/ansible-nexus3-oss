@@ -3,9 +3,15 @@ extends: default
 rules:
   braces:
     max-spaces-inside: 1
-    level: error
+    level: warning
   brackets:
     max-spaces-inside: 1
-    level: error
+    level: warning
   line-length: disable
   truthy: disable
+  empty-lines:
+    level: warning
+  indentation:
+    level: warning
+    indent-sequences: consistent
+  new-line-at-end-of-file: disable
